@@ -13,6 +13,7 @@ describe "a user creating a playlist" do
 
   it "creates a playlist" do
     click_link "Create playlist"
+    fill_in "Title", with: "Classic Rock"
     select "Hotel California", from: "songs"
     click_button "Create"
 
