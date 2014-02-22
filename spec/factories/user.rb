@@ -6,5 +6,6 @@ FactoryGirl.define do
     first_name "Jeff"
     last_name "K"
     dob Date.today
+    balance 0
   end
 end
