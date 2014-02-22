@@ -14,7 +14,7 @@ describe "a user creating a playlist" do
   it "creates a playlist" do
     click_link "Create playlist"
     fill_in "Title", with: "Classic Rock"
-    select "Hotel California", from: "songs"
+    select "Hotel California", from: "playlist_songs"
     click_button "Create"
 
     within ".playlist .songs" do

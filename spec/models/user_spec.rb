@@ -3,6 +3,7 @@ require 'spec_helper'
 describe User do
   it { should have_many(:purchases) }
   it { should have_many(:songs).through(:purchases) }
+  it { should have_many(:playlists) }
 
   it { should validate_presence_of(:email) }
   it { should validate_presence_of(:first_name) }

@@ -1,0 +1,6 @@
+<%= form_for [@user, @playlist] do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.select :songs, options_from_collection_for_select(@user.songs, :id, :title), {}, { multiple: true } %>
+  <%= f.submit "Create" %>
+<% end %>
