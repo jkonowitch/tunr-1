@@ -12,20 +12,10 @@ describe User do
   it { should validate_numericality_of(:balance).is_greater_than_or_equal_to(0) }
 
   describe "#purchase" do
-    subject(:user) do 
-      User.create!({
-        email: "j@k.co", 
-        balance: original_balance, 
-        first_name: "Jeff",
-        last_name: "K",
-        dob: Date.today,
-        password: "shmee",
-        password_confirmation: "shmee"
-      })
-    end
+    subject(:user) { FactoryGirl.create(:user, balance: original_balance) }
+    
     let(:original_balance) { 4.00 }
-    let(:kesha) { Artist.create(name: "Ke$ha", photo_url: "http://www.google.com") }
-    let(:tick_tok) { Song.create(title: "Tick Tok", price: 2.00, artist: kesha)}
+    let(:tick_tok) { FactoryGirl.create(:song) }
 
     context "when affordable" do
       before { user.purchase(tick_tok) }
