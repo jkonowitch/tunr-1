@@ -8,4 +8,6 @@ describe Playlist do
   it { should have_many(:playlist_purchases) }
   it { should have_many(:purchases).through(:playlist_purchases) }
   it { should have_many(:songs).through(:purchases) }
+  it { should have_many(:playlist_users) }
+  it { should have_many(:shared_users).through(:playlist_users) }
 end
