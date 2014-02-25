@@ -2,5 +2,6 @@
 
 <%= form_for(@playlist) do |f| %>
   <%= f.label :shared_users %>
-  <%= f.select :shared_users, options_from_collection_for_select(User.all, :email, :id), {}, { multiple: true } %>
-<% end %>x
+  <%= f.select :shared_users, options_from_collection_for_select(User.all, :id, :email), {}, { multiple: true } %>
+  <%= f.submit "Save" %>
+<% end %>

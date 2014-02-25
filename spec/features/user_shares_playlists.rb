@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe "a user can share a playlist" do
-  let(:creator) { FactoryGirl.create(:user) }
-  let(:shared) { FactoryGirl.create(:user) }
-  let(:some_other_user) { FactoryGirl.create(:user) }
+  let!(:creator) { FactoryGirl.create(:user) }
+  let!(:shared) { FactoryGirl.create(:user) }
+  let!(:some_other_user) { FactoryGirl.create(:user) }
 
   let!(:playlist) { FactoryGirl.create(:playlist, user: creator) }
 
@@ -24,7 +24,7 @@ describe "a user can share a playlist" do
     login(shared)
 
     visit user_path(shared)
-    within ".playlists" do
+    within ".playlists.shared" do
       expect(page).to have_content playlist.title
     end
     click_link playlist.title
@@ -36,7 +36,7 @@ describe "a user can share a playlist" do
     login(some_other_user)
 
     visit user_path(some_other_user)
-    within ".playlists" do
+    within ".playlists.shared" do
       expect(page).to_not have_content playlist.title
     end
     visit playlist_path(playlist)

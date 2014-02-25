@@ -13,6 +13,13 @@
   <% end %>
 </ul>
 
+<h4>Shared Playlists:</h4>
+<ul class="shared playlists">
+  <% @user.shared_playlists.each do |playlist| %>
+    <li><%= link_to playlist.title, playlist_path(playlist) %></li>
+  <% end %>
+</ul>
+
 <p><%= link_to "Edit My Info", edit_user_path(@user) %></p>
 
 <%= form_tag user_path(@user), method: "delete" do %>

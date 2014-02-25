@@ -7,7 +7,7 @@ Tunr::Application.routes.draw do
 
   resources :users do
     resources :songs, only: [:index]
-    resources :playlists, only: [:new, :create, :show, :edit], shallow: true
+    resources :playlists, except: [:index, :destroy], shallow: true
   end
 
   #resources :sessions, only: [:new, :create, :destroy]
