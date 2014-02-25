@@ -5,14 +5,18 @@ describe "a user can share a playlist" do
   let(:shared) { FactoryGirl.create(:user) }
   let(:some_other_user) { FactoryGirl.create(:user) }
 
-  let(:playlist) { FactoryGirl.create(:playlist, user: creator) }
+  let!(:playlist) { FactoryGirl.create(:playlist, user: creator) }
 
   it "can only be seen by people who it is shared with" do
     login(creator)
 
     visit user_path(creator)
     click_link playlist.title
-    click_link "Edit"
+
+    # playlists#show
+    within ".playlist .details" do
+      click_link "Edit"
+    end
     select shared.email, from: "Shared"
     click_button "Save"
 

@@ -1,5 +1,6 @@
 class PlaylistsController < ApplicationController
   before_action :load_user, only: [:new, :create]
+  before_action :load_playlist, only: [:edit, :show]
 
   def new
     @playlist = Playlist.new
@@ -14,12 +15,18 @@ class PlaylistsController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.find_by(id: params[:id])
+  end
+
+  def edit
   end
 
   private
 
   def load_user
     @user = User.find_by(id: params[:user_id])
+  end
+
+  def load_playlist
+    @playlist = Playlist.find_by(id: params[:id])
   end
 end

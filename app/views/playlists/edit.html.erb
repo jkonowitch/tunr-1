@@ -1,0 +1,6 @@
+<h1>Edit <%= @playlist.title %></h1>
+
+<%= form_for(@playlist) do |f| %>
+  <%= f.label :shared_users %>
+  <%= f.select :shared_users, options_from_collection_for_select(User.all, :email, :id), {}, {multiple: true} %>
+<% end %>

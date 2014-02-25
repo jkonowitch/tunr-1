@@ -1,5 +1,10 @@
 <div class="playlist">
   <h3><%= @playlist.title %></h3>
+  
+  <div class="details">
+    <%= link_to "Edit", edit_playlist_path(@playlist) %>
+  </div>
+
   <ul class="songs">
     <% @playlist.songs.each do |song| %>
       <li><%= render partial: 'songs/song', locals: { song: song } %></li>
